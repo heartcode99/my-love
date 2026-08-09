@@ -1,16 +1,16 @@
 <!DOCTYPE html>
-<html lang="bn">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday My Queen Habiba 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Hind Siliguri', sans-serif;
+            font-family: 'Poppins', sans-serif;
             user-select: none;
         }
 
@@ -25,7 +25,7 @@
             position: relative;
         }
 
-        /* অ্যানিমেশন ক্যানভাস */
+        /* Animation Canvas */
         #mainCanvas {
             position: fixed;
             top: 0;
@@ -36,7 +36,7 @@
             z-index: 1;
         }
 
-        /* কার্ড কন্টেইনার */
+        /* Card Container */
         .container {
             width: 90%;
             max-width: 430px;
@@ -63,8 +63,8 @@
         }
 
         .romantic-title {
-            font-family: 'Great Vibes', cursive, 'Hind Siliguri';
-            font-size: 40px;
+            font-family: 'Great Vibes', cursive;
+            font-size: 44px;
             background: linear-gradient(45deg, #ff416c, #ff4b2b, #ffcca1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
@@ -72,7 +72,7 @@
             text-shadow: 0 0 15px rgba(255, 65, 108, 0.6);
         }
 
-        /* মোমবাতি ও কেক */
+        /* Cake & Candle */
         .cake-container {
             margin: 15px 0;
             cursor: pointer;
@@ -111,11 +111,11 @@
             margin-top: -10px;
         }
 
-        /* ইনপুট ও বাটন */
+        /* Input & Button */
         .input-box {
             width: 85%;
             padding: 12px 20px;
-            font-size: 18px;
+            font-size: 20px;
             text-align: center;
             border: 2px solid rgba(255, 105, 180, 0.6);
             border-radius: 50px;
@@ -123,12 +123,18 @@
             color: #fff;
             outline: none;
             margin: 18px 0;
-            letter-spacing: 2px;
+            letter-spacing: 5px;
             transition: 0.3s;
         }
         .input-box:focus {
             border-color: #ff007f;
             box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
         }
 
         .btn-magic {
@@ -137,7 +143,7 @@
             border: none;
             padding: 14px 35px;
             font-size: 17px;
-            font-weight: bold;
+            font-weight: 600;
             border-radius: 50px;
             cursor: pointer;
             box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
@@ -148,7 +154,7 @@
             box-shadow: 0 0 40px rgba(255, 0, 127, 1);
         }
 
-        /* মিউজিক বাটন */
+        /* Music Button */
         .music-btn {
             position: fixed;
             top: 20px;
@@ -170,7 +176,7 @@
         }
         @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* আনলক হওয়ার পর মেইন পেজ */
+        /* Unlocked Secret Content */
         #secret-content {
             display: none;
             animation: zoomIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
@@ -194,7 +200,8 @@
             padding: 12px 10px;
             border-radius: 20px;
             color: #fff;
-            font-size: 14px;
+            font-size: 13px;
+            font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
         }
@@ -205,10 +212,10 @@
         }
 
         .typewriter-box {
-            font-size: 15px;
+            font-size: 14px;
             line-height: 1.7;
             color: #ffe6f2;
-            min-height: 75px;
+            min-height: 85px;
             margin: 15px 0;
             text-shadow: 0 0 8px rgba(255, 192, 203, 0.6);
         }
@@ -220,8 +227,9 @@
             background: rgba(0, 0, 0, 0.6);
             border-radius: 20px;
             border: 1px dashed #ff758c;
-            font-size: 14px;
+            font-size: 13px;
             animation: fadeIn 0.4s;
+            line-height: 1.6;
         }
 
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
@@ -229,15 +237,15 @@
 </head>
 <body>
 
-    <!-- অ্যানিমেশন ক্যানভাস -->
+    <!-- Animation Canvas -->
     <canvas id="mainCanvas"></canvas>
 
-    <!-- ব্যাকগ্রাউন্ড মিউজিক -->
+    <!-- Background Music -->
     <div class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</div>
     <audio id="bgAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3"></audio>
 
     <div class="container">
-        <!-- লক পেজ -->
+        <!-- Lock Page -->
         <div class="glass-card" id="lockCard">
             <div class="cake-container" onclick="blowCandle()">
                 <div class="candle"><div class="flame" id="flame"></div></div>
@@ -245,26 +253,26 @@
             </div>
             
             <h1 class="romantic-title">Happy Birthday Habiba</h1>
-            <p style="font-size: 14px; opacity: 0.9;">গোপন পাসওয়ার্ড দিয়ে ম্যাজিক আনলক করো ✨</p>
+            <p style="font-size: 14px; opacity: 0.9;">Enter PIN (1008) to unlock magic ✨</p>
             
-            <input type="password" id="passInput" class="input-box" placeholder="••••">
+            <input type="password" id="passInput" class="input-box" placeholder="••••" maxlength="6">
             <br>
-            <button class="btn-magic" onclick="unlockSurprise()">আনলক করো ✨</button>
-            <p id="errorTxt" style="color: #ff4d4d; font-size: 12px; margin-top: 10px; display: none;">উফফ! ভুল পাসওয়ার্ড 🙈 আবার চেষ্টা করো!</p>
+            <button class="btn-magic" onclick="unlockSurprise()">Unlock ✨</button>
+            <p id="errorTxt" style="color: #ff4d4d; font-size: 13px; margin-top: 12px; display: none; font-weight: bold;">Oops! Wrong PIN 🙈 Try again!</p>
         </div>
 
-        <!-- আনলকড রোমান্টিক ড্যাশবোর্ড -->
+        <!-- Unlocked Dashboard -->
         <div class="glass-card" id="secret-content">
             <div style="font-size: 50px; cursor: pointer;" onclick="burstHearts(event)">👑💖✨</div>
-            <h1 class="romantic-title">শুভ জন্মদিন হাবিবা! 🌸</h1>
+            <h1 class="romantic-title">Happy Birthday Habiba! 🌸</h1>
             
             <div class="typewriter-box" id="typewriterText"></div>
 
             <div class="grid-buttons">
-                <button class="grid-btn" onclick="showPopup('letter')">💌 রোমান্টিক চিঠি</button>
-                <button class="grid-btn" onclick="releaseBalloons()">🎈 ১০০টি লাভ বেলুন</button>
-                <button class="grid-btn" onclick="showPopup('hug')">🤗 ভার্চুয়াল জড়িয়ে ধরা</button>
-                <button class="grid-btn" onclick="showPopup('promise')">💍 চিরদিনের প্রমিজ</button>
+                <button class="grid-btn" onclick="showPopup('letter')">💌 Romantic Letter</button>
+                <button class="grid-btn" onclick="releaseBalloons()">🎈 100 Love Balloons</button>
+                <button class="grid-btn" onclick="showPopup('hug')">🤗 Virtual Hug</button>
+                <button class="grid-btn" onclick="showPopup('promise')">💍 Forever Promise</button>
             </div>
 
             <div class="popup-modal" id="popupBox"></div>
@@ -272,7 +280,11 @@
     </div>
 
     <script>
-        // ================= ১. ক্যানভাস অ্যানিমেশন ইঞ্জিনের শুরু =================
+        // ================= PASSWORD SETUP =================
+        const CORRECT_PIN = "1008"; 
+
+
+        // ================= CANVAS ANIMATION ENGINE =================
         const canvas = document.getElementById('mainCanvas');
         const ctx = canvas.getContext('2d');
 
@@ -283,7 +295,7 @@
         resize();
         window.addEventListener('resize', resize);
 
-        // তারা (Stars)
+        // Stars
         let stars = [];
         for (let i = 0; i < 120; i++) {
             stars.push({
@@ -295,7 +307,7 @@
             });
         }
 
-        // খসে পড়া তারা (Shooting Stars)
+        // Shooting Stars
         let shootingStars = [];
         function createShootingStar() {
             shootingStars.push({
@@ -309,7 +321,7 @@
         }
         setInterval(createShootingStar, 2500);
 
-        // ভেসে ওঠা লাভ বেলুন (Heart Balloons)
+        // Floating Heart Balloons
         let balloons = [];
         const balloonColors = ['#ff007f', '#ff416c', '#ff758c', '#e040fb', '#ff5252'];
 
@@ -326,7 +338,7 @@
         }
         setInterval(createBalloon, 800);
 
-        // স্পার্কলস ও কণা (Particles)
+        // Sparkles & Particles
         let particles = [];
         function createBurst(x, y, count = 25) {
             const chars = ['💖', '✨', '🌸', '💓', '⭐', '🎈'];
@@ -343,11 +355,11 @@
             }
         }
 
-        // প্রধান এনিমেশন লুপ
+        // Main Animation Loop
         function render() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
 
-            // ১. ড্র তারা
+            // 1. Draw Stars
             stars.forEach(s => {
                 s.alpha += s.speed;
                 if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
@@ -357,7 +369,7 @@
                 ctx.fill();
             });
 
-            // ২. ড্র শ্যুটিং স্টার
+            // 2. Draw Shooting Stars
             shootingStars.forEach((ss, idx) => {
                 ss.x += ss.speed;
                 ss.y += ss.speed * 0.5;
@@ -373,13 +385,12 @@
                 if (ss.alpha <= 0) shootingStars.splice(idx, 1);
             });
 
-            // ৩. ড্র লাভ বেলুন
+            // 3. Draw Heart Balloons
             balloons.forEach((b, idx) => {
                 b.y -= b.speedY;
                 b.swingAngle += b.swing;
                 b.x += Math.sin(b.swingAngle) * 0.8;
 
-                // বেলুন হার্ট শেপ
                 ctx.save();
                 ctx.translate(b.x, b.y);
                 ctx.beginPath();
@@ -391,7 +402,7 @@
                 ctx.shadowBlur = 10;
                 ctx.fill();
 
-                // সুতা
+                // Balloon String
                 ctx.beginPath();
                 ctx.moveTo(0, b.size);
                 ctx.lineTo(Math.sin(b.swingAngle * 2) * 8, b.size + 30);
@@ -403,7 +414,7 @@
                 if (b.y < -60) balloons.splice(idx, 1);
             });
 
-            // ৪. ড্র পার্টিকেলস
+            // 4. Draw Particles
             particles.forEach((p, idx) => {
                 p.x += p.vx;
                 p.y += p.vy;
@@ -422,16 +433,16 @@
         }
         render();
 
-        // স্ক্রিন ক্লিকে ব্লাস্ট
+        // Screen Click Blast Effect
         window.addEventListener('click', (e) => {
             if(e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
                 createBurst(e.clientX, e.clientY);
             }
         });
 
-        // ================= ২. ইন্টারঅ্যাক্টিভ ফিচারস =================
+        // ================= INTERACTIVE FEATURES =================
 
-        // মোমবাতি ফু দেওয়া
+        // Blow Candle
         function blowCandle() {
             const flame = document.getElementById('flame');
             if(flame) {
@@ -440,7 +451,7 @@
             }
         }
 
-        // মিউজিক কন্ট্রোল
+        // Music Toggle
         const audio = document.getElementById('bgAudio');
         let playing = false;
         function toggleMusic() {
@@ -454,50 +465,56 @@
             playing = !playing;
         }
 
-        // আনলক লজিক
+        // Unlock Logic
         function unlockSurprise() {
             const input = document.getElementById('passInput').value.trim();
-            if(input !== "") { // যেকোনো পাসওয়ার্ডে আনলক হবে
+            const errorTxt = document.getElementById('errorTxt');
+            const inputBox = document.getElementById('passInput');
+            
+            if(input === CORRECT_PIN) { 
+                errorTxt.style.display = 'none';
                 document.getElementById('lockCard').style.display = 'none';
                 document.getElementById('secret-content').style.display = 'block';
                 startTypewriter();
-                toggleMusic();
+                if(!playing) toggleMusic();
                 createBurst(window.innerWidth/2, window.innerHeight/2, 60);
             } else {
-                document.getElementById('errorTxt').style.display = 'block';
+                errorTxt.style.display = 'block';
+                inputBox.style.animation = 'shake 0.3s';
+                setTimeout(() => { inputBox.style.animation = ''; }, 300);
             }
         }
 
-        // টাইপরাইটার
-        const note = "আমার জীবনের সবচেয়ে মিষ্টি মানুষটিকে জন্মদিনের অনেক অনেক শুভেচ্ছা! তোমার প্রতিটি মুহূর্ত ভালোবাসায় ভরে উঠুক। সবসময় তোমার এই মিষ্টি হাসিটা ধরে রেখো! 💖✨";
+        // Typewriter Effect
+        const note = "Wishing the sweetest person in my life a very happy birthday, Habiba! May every moment of yours be filled with endless love and joy. Always keep that beautiful smile on your face! 💖✨";
         let idx = 0;
         function startTypewriter() {
             if(idx < note.length) {
                 document.getElementById('typewriterText').innerHTML += note.charAt(idx);
                 idx++;
-                setTimeout(startTypewriter, 45);
+                setTimeout(startTypewriter, 40);
             }
         }
 
-        // ১০০টি বেলুন রিলিজ
+        // Release 100 Balloons
         function releaseBalloons() {
             for(let i=0; i<60; i++) {
                 setTimeout(createBalloon, i * 40);
             }
         }
 
-        // পপআপ মেসেজ
+        // Popup Messages (All English)
         function showPopup(type) {
             const box = document.getElementById('popupBox');
             box.style.display = 'block';
             createBurst(window.innerWidth/2, window.innerHeight/2, 30);
 
             if(type === 'letter') {
-                box.innerHTML = "💌 <b>প্রিয় হাবিবু,</b><br>তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার। তোমার সাথে কাটানো প্রতিটা মুহূর্ত আমার কাছে সেরা স্মৃতি। অনেক ভালোবাসি তোমায়! ❤️";
+                box.innerHTML = "💌 <b>Dearest Habiba,</b><br>You are the most wonderful gift in my life. Every single moment spent with you is a precious memory. I love you so much! ❤️";
             } else if(type === 'hug') {
-                box.innerHTML = "🤗 <b>অনেকগুলো ভার্চুয়াল জাদুকরী কোলাকুলি আর মিষ্টি চুমু! 💋✨</b>";
+                box.innerHTML = "🤗 <b>Sending you the warmest virtual hugs and sweetest kisses! 💋✨</b>";
             } else if(type === 'promise') {
-                box.innerHTML = "💍 <b>প্রমিজ:</b><br>কথা দিচ্ছি, সারা জীবন তোমার পাশে থেকে তোমার মুখের এই মিষ্টি হাসিটা আগলে রাখবো! 🌸";
+                box.innerHTML = "💍 <b>My Promise:</b><br>I promise to stay by your side forever and always protect your priceless smile! 🌸";
             }
         }
     </script>
