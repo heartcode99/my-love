@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Happy Birthday My Queen Habiba 💖</title>
-    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
     <style>
         * {
             box-sizing: border-box;
@@ -15,9 +15,7 @@
         }
 
         body {
-            background: linear-gradient(-45deg, #0d001a, #2a082e, #4a0033, #15002b);
-            background-size: 400% 400%;
-            animation: gradientBG 12s ease infinite;
+            background: #090014;
             min-height: 100vh;
             display: flex;
             justify-content: center;
@@ -27,69 +25,90 @@
             position: relative;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        /* ক্যানভাস ব্যাকগ্রাউন্ড */
-        canvas {
+        /* অ্যানিমেশন ক্যানভাস */
+        #mainCanvas {
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 2;
+            z-index: 1;
         }
 
         /* কার্ড কন্টেইনার */
         .container {
             width: 90%;
-            max-width: 420px;
+            max-width: 430px;
             z-index: 10;
             margin: 20px 0;
         }
 
-        .card {
-            background: rgba(255, 255, 255, 0.08);
+        .glass-card {
+            background: rgba(255, 255, 255, 0.07);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
-            border: 1px solid rgba(255, 182, 193, 0.3);
+            border: 1px solid rgba(255, 105, 180, 0.4);
             border-radius: 30px;
-            padding: 30px 20px;
+            padding: 35px 22px;
             text-align: center;
-            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3), inset 0 0 15px rgba(255, 105, 180, 0.2);
-            animation: floatCard 4s ease-in-out infinite alternate;
+            box-shadow: 0 0 35px rgba(255, 20, 147, 0.4), inset 0 0 20px rgba(255, 105, 180, 0.2);
+            animation: cardGlow 4s ease-in-out infinite alternate;
+            position: relative;
         }
 
-        @keyframes floatCard {
-            0% { transform: translateY(0px) rotate(0deg); }
-            100% { transform: translateY(-10px) rotate(0.5deg); }
+        @keyframes cardGlow {
+            0% { transform: translateY(0px); box-shadow: 0 0 25px rgba(255, 20, 147, 0.4); }
+            100% { transform: translateY(-8px); box-shadow: 0 0 45px rgba(255, 105, 180, 0.7); }
         }
 
-        .title {
-            font-family: 'Pacifico', cursive, 'Hind Siliguri';
-            font-size: 28px;
-            background: linear-gradient(45deg, #ff758c, #ff7eb3, #ffcca1);
+        .romantic-title {
+            font-family: 'Great Vibes', cursive, 'Hind Siliguri';
+            font-size: 40px;
+            background: linear-gradient(45deg, #ff416c, #ff4b2b, #ffcca1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             margin-bottom: 10px;
-            text-shadow: 0 0 20px rgba(255, 117, 140, 0.5);
+            text-shadow: 0 0 15px rgba(255, 65, 108, 0.6);
         }
 
-        /* লাভ হার্ট পালস */
-        .heart-crown {
-            font-size: 55px;
-            display: inline-block;
-            animation: pulseHeart 1s infinite alternate;
+        /* মোমবাতি ও কেক */
+        .cake-container {
+            margin: 15px 0;
             cursor: pointer;
+            display: inline-block;
+            position: relative;
         }
 
-        @keyframes pulseHeart {
-            0% { transform: scale(1) rotate(-5deg); filter: drop-shadow(0 0 5px #ff416c); }
-            100% { transform: scale(1.2) rotate(5deg); filter: drop-shadow(0 0 20px #ff416c); }
+        .candle {
+            width: 12px;
+            height: 35px;
+            background: linear-gradient(#ff758c, #ff7eb3);
+            border-radius: 6px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .flame {
+            width: 14px;
+            height: 20px;
+            background: #ffbc00;
+            border-radius: 50% 50% 20% 20%;
+            position: absolute;
+            top: -18px;
+            left: -1px;
+            box-shadow: 0 0 15px #ffbc00, 0 0 25px #ff4500;
+            animation: flicker 0.1s infinite alternate;
+        }
+
+        @keyframes flicker {
+            0% { transform: scale(1) rotate(-2deg); }
+            100% { transform: scale(1.15) rotate(2deg); }
+        }
+
+        .cake-body {
+            font-size: 50px;
+            margin-top: -10px;
         }
 
         /* ইনপুট ও বাটন */
@@ -100,39 +119,36 @@
             text-align: center;
             border: 2px solid rgba(255, 105, 180, 0.6);
             border-radius: 50px;
-            background: rgba(0, 0, 0, 0.4);
+            background: rgba(0, 0, 0, 0.5);
             color: #fff;
             outline: none;
-            margin: 15px 0;
-            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+            margin: 18px 0;
+            letter-spacing: 2px;
             transition: 0.3s;
         }
         .input-box:focus {
-            border-color: #ff2a70;
-            box-shadow: 0 0 25px rgba(255, 42, 112, 0.8);
+            border-color: #ff007f;
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.8);
         }
 
-        .btn-glow {
+        .btn-magic {
             background: linear-gradient(45deg, #ff007f, #ff5e62);
             color: white;
             border: none;
-            padding: 12px 32px;
-            font-size: 16px;
+            padding: 14px 35px;
+            font-size: 17px;
             font-weight: bold;
             border-radius: 50px;
             cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+            box-shadow: 0 0 25px rgba(255, 0, 127, 0.7);
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
-
-        .btn-glow:hover {
+        .btn-magic:hover {
             transform: scale(1.08);
-            box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+            box-shadow: 0 0 40px rgba(255, 0, 127, 1);
         }
 
-        /* মিউজিক প্লেয়ার বাটন */
+        /* মিউজিক বাটন */
         .music-btn {
             position: fixed;
             top: 20px;
@@ -141,32 +157,31 @@
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 50%;
-            width: 45px;
-            height: 45px;
+            width: 50px;
+            height: 50px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
+            font-size: 22px;
             cursor: pointer;
             z-index: 100;
-            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
-            animation: spinMusic 8s linear infinite;
+            box-shadow: 0 0 20px rgba(255, 105, 180, 0.6);
+            animation: spin 8s linear infinite;
         }
-        @keyframes spinMusic { 100% { transform: rotate(360deg); } }
+        @keyframes spin { 100% { transform: rotate(360deg); } }
 
-        /* আনলক করা কন্টেন্ট */
+        /* আনলক হওয়ার পর মেইন পেজ */
         #secret-content {
             display: none;
             animation: zoomIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
 
         @keyframes zoomIn {
-            from { opacity: 0; transform: scale(0.5); }
+            from { opacity: 0; transform: scale(0.6); }
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* ইন্টারঅ্যাক্টিভ বাটন গ্রিড */
-        .interactive-grid {
+        .grid-buttons {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 12px;
@@ -174,33 +189,31 @@
         }
 
         .grid-btn {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 182, 193, 0.3);
-            padding: 12px 8px;
-            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.12);
+            border: 1px solid rgba(255, 182, 193, 0.4);
+            padding: 12px 10px;
+            border-radius: 20px;
             color: #fff;
-            font-size: 13px;
+            font-size: 14px;
             cursor: pointer;
             transition: all 0.3s;
         }
-
         .grid-btn:hover {
-            background: rgba(255, 105, 180, 0.4);
-            transform: translateY(-3px) scale(1.03);
-            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+            background: rgba(255, 0, 127, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 5px 20px rgba(255, 0, 127, 0.6);
         }
 
-        .typewriter-text {
+        .typewriter-box {
             font-size: 15px;
             line-height: 1.7;
             color: #ffe6f2;
-            min-height: 70px;
+            min-height: 75px;
             margin: 15px 0;
-            text-shadow: 0 0 8px rgba(255, 192, 203, 0.5);
+            text-shadow: 0 0 8px rgba(255, 192, 203, 0.6);
         }
 
-        /* পপআপ ডায়ালগ */
-        .popup-box {
+        .popup-modal {
             display: none;
             margin-top: 15px;
             padding: 15px;
@@ -211,193 +224,280 @@
             animation: fadeIn 0.4s;
         }
 
-        /* লাভ মিটার অ্যানিমেশন */
-        .meter-bar {
-            width: 100%;
-            height: 12px;
-            background: rgba(255, 255, 255, 0.2);
-            border-radius: 10px;
-            margin-top: 8px;
-            overflow: hidden;
-        }
-        .meter-fill {
-            width: 0%;
-            height: 100%;
-            background: linear-gradient(90deg, #ff007f, #ff758c);
-            transition: width 2s ease-in-out;
-            box-shadow: 0 0 10px #ff007f;
-        }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
     </style>
 </head>
 <body>
 
-    <canvas id="canvas"></canvas>
+    <!-- অ্যানিমেশন ক্যানভাস -->
+    <canvas id="mainCanvas"></canvas>
 
-    <div class="music-btn" id="musicToggle" onclick="toggleAudio()">🎵</div>
-    <audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3"></audio>
+    <!-- ব্যাকগ্রাউন্ড মিউজিক -->
+    <div class="music-btn" id="musicBtn" onclick="toggleMusic()">🎵</div>
+    <audio id="bgAudio" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3"></audio>
 
     <div class="container">
-        <div class="card" id="lockCard">
-            <div class="heart-crown" onclick="explodeHearts(event)">👑💖</div>
-            <h1 class="title">Happy Birthday Habiba!</h1>
-            <p style="font-size: 14px; opacity: 0.9;">আমার ভালোবাসার রাজকন্যার গোপন পাসওয়ার্ডটি দাও ✨</p>
+        <!-- লক পেজ -->
+        <div class="glass-card" id="lockCard">
+            <div class="cake-container" onclick="blowCandle()">
+                <div class="candle"><div class="flame" id="flame"></div></div>
+                <div class="cake-body">🎂</div>
+            </div>
+            
+            <h1 class="romantic-title">Happy Birthday Habiba</h1>
+            <p style="font-size: 14px; opacity: 0.9;">গোপন পাসওয়ার্ড দিয়ে ম্যাজিক আনলক করো ✨</p>
             
             <input type="password" id="passInput" class="input-box" placeholder="••••">
             <br>
-            <button class="btn-glow" onclick="checkPass()">আনলক করো ✨</button>
-            <p id="errorText" style="color: #ff4d4d; font-size: 12px; margin-top: 10px; display: none;">উফফ! ভুল পাসওয়ার্ড 🙈 আবার চেষ্টা করো!</p>
+            <button class="btn-magic" onclick="unlockSurprise()">আনলক করো ✨</button>
+            <p id="errorTxt" style="color: #ff4d4d; font-size: 12px; margin-top: 10px; display: none;">উফফ! ভুল পাসওয়ার্ড 🙈 আবার চেষ্টা করো!</p>
         </div>
 
-        <div class="card" id="secret-content">
-            <div class="heart-crown" onclick="explodeHearts(event)">💖🎂✨</div>
-            <h1 class="title">শুভ জন্মদিন হাবিবু! 🌸</h1>
+        <!-- আনলকড রোমান্টিক ড্যাশবোর্ড -->
+        <div class="glass-card" id="secret-content">
+            <div style="font-size: 50px; cursor: pointer;" onclick="burstHearts(event)">👑💖✨</div>
+            <h1 class="romantic-title">শুভ জন্মদিন হাবিবু! 🌸</h1>
             
-            <div class="typewriter-text" id="typewriter"></div>
+            <div class="typewriter-box" id="typewriterText"></div>
 
-            <div class="interactive-grid">
-                <button class="grid-btn" onclick="openBox('letter')">💌 ভালোবাসার চিঠি</button>
-                <button class="grid-btn" onclick="openBox('hug')">🤗 জাদুকরী জড়িয়ে ধরা</button>
-                <button class="grid-btn" onclick="openBox('meter')">📊 লাভ মিটার টেস্ট</button>
-                <button class="grid-btn" onclick="openBox('promise')">💍 চিরদিনের ওয়াদা</button>
+            <div class="grid-buttons">
+                <button class="grid-btn" onclick="showPopup('letter')">💌 রোমান্টিক চিঠি</button>
+                <button class="grid-btn" onclick="releaseBalloons()">🎈 ১০০টি লাভ বেলুন</button>
+                <button class="grid-btn" onclick="showPopup('hug')">🤗 ভার্চুয়াল জড়িয়ে ধরা</button>
+                <button class="grid-btn" onclick="showPopup('promise')">💍 চিরদিনের প্রমিজ</button>
             </div>
 
-            <div class="popup-box" id="popupBox"></div>
+            <div class="popup-modal" id="popupBox"></div>
         </div>
     </div>
 
     <script>
-        // ১. ক্যানভাস অ্যানিমেশন ও হার্ট এক্সপ্লোশন
-        const canvas = document.getElementById('canvas');
+        // ================= ১. ক্যানভাস অ্যানিমেশন ইঞ্জিনের শুরু =================
+        const canvas = document.getElementById('mainCanvas');
         const ctx = canvas.getContext('2d');
-        let particles = [];
 
-        function resizeCanvas() {
+        function resize() {
             canvas.width = window.innerWidth;
             canvas.height = window.innerHeight;
         }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+        resize();
+        window.addEventListener('resize', resize);
 
-        class Particle {
-            constructor(x, y, isExplosion = false) {
-                this.x = x || Math.random() * canvas.width;
-                this.y = y || canvas.height + 20;
-                this.size = Math.random() * 18 + 10;
-                this.speedY = isExplosion ? (Math.random() - 0.5) * 8 : -(Math.random() * 2 + 1);
-                this.speedX = isExplosion ? (Math.random() - 0.5) * 8 : (Math.random() - 0.5) * 1.5;
-                this.color = `hsl(${Math.random() * 50 + 320}, 100%, 70%)`;
-                this.opacity = 1;
-                this.isExplosion = isExplosion;
-                this.char = ['💖', '🌸', '✨', '💕', '🌹', '❤️'][Math.floor(Math.random() * 6)];
-            }
-            update() {
-                this.y += this.speedY;
-                this.x += this.speedX;
-                if (this.isExplosion) {
-                    this.opacity -= 0.02;
-                } else if (this.y < -20) {
-                    this.y = canvas.height + 20;
-                    this.x = Math.random() * canvas.width;
-                }
-            }
-            draw() {
-                ctx.save();
-                ctx.globalAlpha = Math.max(this.opacity, 0);
-                ctx.font = `${this.size}px serif`;
-                ctx.fillText(this.char, this.x, this.y);
-                ctx.restore();
-            }
-        }
-
-        for (let i = 0; i < 25; i++) {
-            particles.push(new Particle());
-        }
-
-        function animateCanvas() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach((p, index) => {
-                p.update();
-                p.draw();
-                if (p.isExplosion && p.opacity <= 0) {
-                    particles.splice(index, 1);
-                }
+        // তারা (Stars)
+        let stars = [];
+        for (let i = 0; i < 120; i++) {
+            stars.push({
+                x: Math.random() * window.innerWidth,
+                y: Math.random() * window.innerHeight,
+                size: Math.random() * 2,
+                alpha: Math.random(),
+                speed: Math.random() * 0.02 + 0.005
             });
-            requestAnimationFrame(animateCanvas);
         }
-        animateCanvas();
 
-        function explodeHearts(e) {
-            const x = e.clientX || window.innerWidth / 2;
-            const y = e.clientY || window.innerHeight / 2;
-            for (let i = 0; i < 30; i++) {
-                particles.push(new Particle(x, y, true));
+        // খসে পড়া তারা (Shooting Stars)
+        let shootingStars = [];
+        function createShootingStar() {
+            shootingStars.push({
+                x: Math.random() * canvas.width,
+                y: Math.random() * (canvas.height / 2),
+                len: Math.random() * 80 + 50,
+                speed: Math.random() * 8 + 6,
+                size: Math.random() * 2 + 1,
+                alpha: 1
+            });
+        }
+        setInterval(createShootingStar, 2500);
+
+        // ভেসে ওঠা লাভ বেলুন (Heart Balloons)
+        let balloons = [];
+        const balloonColors = ['#ff007f', '#ff416c', '#ff758c', '#e040fb', '#ff5252'];
+
+        function createBalloon() {
+            balloons.push({
+                x: Math.random() * canvas.width,
+                y: canvas.height + 50,
+                size: Math.random() * 15 + 18,
+                color: balloonColors[Math.floor(Math.random() * balloonColors.length)],
+                speedY: Math.random() * 1.8 + 1,
+                swing: Math.random() * 0.05,
+                swingAngle: Math.random() * Math.PI * 2
+            });
+        }
+        setInterval(createBalloon, 800);
+
+        // স্পার্কলস ও কণা (Particles)
+        let particles = [];
+        function createBurst(x, y, count = 25) {
+            const chars = ['💖', '✨', '🌸', '💓', '⭐', '🎈'];
+            for (let i = 0; i < count; i++) {
+                particles.push({
+                    x: x,
+                    y: y,
+                    vx: (Math.random() - 0.5) * 8,
+                    vy: (Math.random() - 0.5) * 8,
+                    char: chars[Math.floor(Math.random() * chars.length)],
+                    size: Math.random() * 18 + 12,
+                    alpha: 1
+                });
             }
         }
+
+        // প্রধান এনিমেশন লুপ
+        function render() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // ১. ড্র তারা
+            stars.forEach(s => {
+                s.alpha += s.speed;
+                if (s.alpha > 1 || s.alpha < 0) s.speed = -s.speed;
+                ctx.fillStyle = `rgba(255, 255, 255, ${Math.abs(s.alpha)})`;
+                ctx.beginPath();
+                ctx.arc(s.x, s.y, s.size, 0, Math.PI * 2);
+                ctx.fill();
+            });
+
+            // ২. ড্র শ্যুটিং স্টার
+            shootingStars.forEach((ss, idx) => {
+                ss.x += ss.speed;
+                ss.y += ss.speed * 0.5;
+                ss.alpha -= 0.015;
+
+                ctx.strokeStyle = `rgba(255, 255, 255, ${ss.alpha})`;
+                ctx.lineWidth = ss.size;
+                ctx.beginPath();
+                ctx.moveTo(ss.x, ss.y);
+                ctx.lineTo(ss.x - ss.len, ss.y - ss.len * 0.5);
+                ctx.stroke();
+
+                if (ss.alpha <= 0) shootingStars.splice(idx, 1);
+            });
+
+            // ৩. ড্র লাভ বেলুন
+            balloons.forEach((b, idx) => {
+                b.y -= b.speedY;
+                b.swingAngle += b.swing;
+                b.x += Math.sin(b.swingAngle) * 0.8;
+
+                // বেলুন হার্ট শেপ
+                ctx.save();
+                ctx.translate(b.x, b.y);
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.bezierCurveTo(-b.size, -b.size, -b.size * 1.5, b.size / 3, 0, b.size);
+                ctx.bezierCurveTo(b.size * 1.5, b.size / 3, b.size, -b.size, 0, 0);
+                ctx.fillStyle = b.color;
+                ctx.shadowColor = b.color;
+                ctx.shadowBlur = 10;
+                ctx.fill();
+
+                // সুতা
+                ctx.beginPath();
+                ctx.moveTo(0, b.size);
+                ctx.lineTo(Math.sin(b.swingAngle * 2) * 8, b.size + 30);
+                ctx.strokeStyle = "rgba(255, 255, 255, 0.5)";
+                ctx.lineWidth = 1.2;
+                ctx.stroke();
+                ctx.restore();
+
+                if (b.y < -60) balloons.splice(idx, 1);
+            });
+
+            // ৪. ড্র পার্টিকেলস
+            particles.forEach((p, idx) => {
+                p.x += p.vx;
+                p.y += p.vy;
+                p.alpha -= 0.02;
+
+                ctx.save();
+                ctx.globalAlpha = Math.max(p.alpha, 0);
+                ctx.font = `${p.size}px serif`;
+                ctx.fillText(p.char, p.x, p.y);
+                ctx.restore();
+
+                if (p.alpha <= 0) particles.splice(idx, 1);
+            });
+
+            requestAnimationFrame(render);
+        }
+        render();
+
+        // স্ক্রিন ক্লিকে ব্লাস্ট
         window.addEventListener('click', (e) => {
-            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
-                explodeHearts(e);
+            if(e.target.tagName !== 'INPUT' && e.target.tagName !== 'BUTTON') {
+                createBurst(e.clientX, e.clientY);
             }
         });
 
-        // ২. ব্যাকগ্রাউন্ড গান
-        const audio = document.getElementById('bgMusic');
-        let isPlaying = false;
-        function toggleAudio() {
-            if (isPlaying) {
-                audio.pause();
-                document.getElementById('musicToggle').style.animationPlayState = 'paused';
-            } else {
-                audio.play();
-                document.getElementById('musicToggle').style.animationPlayState = 'running';
+        // ================= ২. ইন্টারঅ্যাক্টিভ ফিচারস =================
+
+        // মোমবাতি ফু দেওয়া
+        function blowCandle() {
+            const flame = document.getElementById('flame');
+            if(flame) {
+                flame.style.display = 'none';
+                createBurst(window.innerWidth / 2, window.innerHeight / 2 - 100, 50);
             }
-            isPlaying = !isPlaying;
         }
 
-        // ৩. পাসওয়ার্ড আনলক
-        function checkPass() {
-            const val = document.getElementById('passInput').value.toLowerCase().trim();
-            // যেকোনো পাসওয়ার্ড লিখলেই আনলক হবে
-            if (val !== "") {
+        // মিউজিক কন্ট্রোল
+        const audio = document.getElementById('bgAudio');
+        let playing = false;
+        function toggleMusic() {
+            if(playing) {
+                audio.pause();
+                document.getElementById('musicBtn').style.animationPlayState = 'paused';
+            } else {
+                audio.play();
+                document.getElementById('musicBtn').style.animationPlayState = 'running';
+            }
+            playing = !playing;
+        }
+
+        // আনলক লজিক
+        function unlockSurprise() {
+            const input = document.getElementById('passInput').value.trim();
+            if(input !== "") { // যেকোনো পাসওয়ার্ডে আনলক হবে
                 document.getElementById('lockCard').style.display = 'none';
                 document.getElementById('secret-content').style.display = 'block';
                 startTypewriter();
-                toggleAudio(); // গান অটো-প্লে শুরু হবে
-                explodeHearts({ clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
+                toggleMusic();
+                createBurst(window.innerWidth/2, window.innerHeight/2, 60);
             } else {
-                document.getElementById('errorText').style.display = 'block';
+                document.getElementById('errorTxt').style.display = 'block';
             }
         }
 
-        // ৪. টাইপরাইটার অ্যানিমেশন
-        const loveNote = "আমার মিষ্টি হাবিবু, আজকের এই বিশেষ দিনে তোমার হাসিমুখটাই আমার সেরা উপহার। তুমি পাশে থাকলে পুরো পৃথিবীটা অনেক বেশি সুন্দর মনে হয়! শুভ জন্মদিন আমার রানি! 💕✨";
-        let textIdx = 0;
+        // টাইপরাইটার
+        const note = "আমার জীবনের সবচেয়ে মিষ্টি মানুষটিকে জন্মদিনের অনেক অনেক শুভেচ্ছা! তোমার প্রতিটি মুহূর্ত ভালোবাসায় ভরে উঠুক। সবসময় তোমার এই মিষ্টি হাসিটা ধরে রেখো! 💖✨";
+        let idx = 0;
         function startTypewriter() {
-            if (textIdx < loveNote.length) {
-                document.getElementById('typewriter').innerHTML += loveNote.charAt(textIdx);
-                textIdx++;
+            if(idx < note.length) {
+                document.getElementById('typewriterText').innerHTML += note.charAt(idx);
+                idx++;
                 setTimeout(startTypewriter, 45);
             }
         }
 
-        // ৫. পপআপ সার্ভিসেস
-        function openBox(type) {
+        // ১০০টি বেলুন রিলিজ
+        function releaseBalloons() {
+            for(let i=0; i<60; i++) {
+                setTimeout(createBalloon, i * 40);
+            }
+        }
+
+        // পপআপ মেসেজ
+        function showPopup(type) {
             const box = document.getElementById('popupBox');
             box.style.display = 'block';
+            createBurst(window.innerWidth/2, window.innerHeight/2, 30);
 
             if(type === 'letter') {
-                box.innerHTML = "💌 <b>চিঠি:</b><br>হাবিবু, জীবনের বাকি পথটাও ঠিক এভাবে তোমার হাত ধরে হেঁটে যেতে চাই। ভালোবাসি তোমায় অনেক অনেক! ❤️";
+                box.innerHTML = "💌 <b>প্রিয় হাবিবু,</b><br>তুমি আমার জীবনের সবচেয়ে সুন্দর উপহার। তোমার সাথে কাটানো প্রতিটা মুহূর্ত আমার কাছে সেরা স্মৃতি। অনেক ভালোবাসি তোমায়! ❤️";
             } else if(type === 'hug') {
-                box.innerHTML = "🤗 <b>ভার্চুয়াল কোলাকুলি:</b><br>অনেকগুলো আঁটসাঁট জাদুকরী জড়িয়ে ধরা আর সাথে অনেকগুলো মিষ্টি চুমু! 💋✨";
-            } else if(type === 'meter') {
-                box.innerHTML = `
-                    💖 <b>ভালোবাসার পরিমাপ:</b> ♾️ ১০০০০% (অসীম!)
-                    <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
-                `;
-                setTimeout(() => {
-                    document.getElementById('meterFill').style.width = '100%';
-                }, 100);
+                box.innerHTML = "🤗 <b>অনেকগুলো ভার্চুয়াল জাদুকরী কোলাকুলি আর মিষ্টি চুমু! 💋✨</b>";
             } else if(type === 'promise') {
-                box.innerHTML = "💍 <b>ওয়াদা:</b><br>কথা দিচ্ছি, হাজারো ব্যস্ততার মাঝেও তোমার মুখের হাসিটা কখনো মুছে যেতে দেবো না! 🥰";
+                box.innerHTML = "💍 <b>প্রমিজ:</b><br>কথা দিচ্ছি, সারা জীবন তোমার পাশে থেকে তোমার মুখের এই মিষ্টি হাসিটা আগলে রাখবো! 🌸";
             }
         }
     </script>
