@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy Birthday Habiba ❤️</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      position: relative;
+      color: #fff;
+    }
+
+    /* ব্যাকগ্রাউন্ড ভাসমান লাভ অ্যানিমেশন */
+    .heart-bg {
+      position: absolute;
+      top: -10%;
+      color: rgba(255, 255, 255, 0.4);
+      animation: floatUp 6s linear infinite;
+    }
+
+    @keyframes floatUp {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+
+    /* মূল কার্ড কনটেইনার */
+    .container {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(12px);
+      padding: 35px 25px;
+      border-radius: 20px;
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      max-width: 380px;
+      width: 90%;
+      z-index: 10;
+    }
+
+    h1 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+
+    p {
+      font-size: 15px;
+      margin-bottom: 20px;
+      opacity: 0.95;
+    }
+
+    /* পাসওয়ার্ড ইনপুট ফিল্ড */
+    input[type="password"] {
+      width: 80%;
+      padding: 12px;
+      font-size: 20px;
+      text-align: center;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      outline: none;
+      background: rgba(255, 255, 255, 0.25);
+      color: #fff;
+      margin-bottom: 15px;
+      letter-spacing: 6px;
+    }
+
+    input[type="password"]::placeholder {
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: normal;
+      font-size: 14px;
+    }
+
+    button {
+      background: #ff4757;
+      color: white;
+      border: none;
+      padding: 12px 30px;
+      font-size: 16px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: #ff6b81;
+      transform: translateY(-2px);
+    }
+
+    .error-msg {
+      color: #ffeaa7;
+      font-size: 14px;
+      margin-top: 12px;
+      display: none;
+      font-weight: bold;
+    }
+
+    /* দ্বিতীয় পেজ (গিফট পেজ) */
+    #gift-page {
+      display: none;
+    }
+
+    .gift-grid {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 25px;
+    }
+
+    .gift-box {
+      font-size: 40px;
+      cursor: pointer;
+      transition: transform 0.3s, background 0.3s;
+      background: rgba(255, 255, 255, 0.25);
+      padding: 15px;
+      border-radius: 15px;
+      border: 1px dashed rgba(255, 255, 255, 0.6);
+    }
+
+    .gift-box:hover {
+      transform: scale(1.15) rotate(5deg);
+      background: rgba(255, 255, 255, 0.4);
+    }
+
+    /* মেসেজ পপআপ মডাল */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 100;
+    }
+
+    .modal-content {
+      background: #fff;
+      color: #2f3542;
+      padding: 30px 20px;
+      border-radius: 20px;
+      text-align: center;
+      width: 80%;
+      max-width: 320px;
+      animation: popIn 0.3s ease;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    }
+
+    @keyframes popIn {
+      from { transform: scale(0.7); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .modal-content h2 {
+      color: #ff4757;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ভাসমান লাভ ব্যাকগ্রাউন্ড -->
+  <div id="hearts-container"></div>
+
+  <!-- প্রথম পেজ: লক সিস্টেম -->
+  <div class="container" id="lock-page">
+    <h1>হ্যাপি বার্থডে হাবিবা 💖</h1>
+    <p>তোমার সারপ্রাইজ উপহারটি আনলক করতে পিন কোড দাও:</p>
+    <input type="password" id="pin-input" maxlength="4" placeholder="PIN দিন">
+    <br>
+    <button onclick="checkPin()">আনলক করো 🔓</button>
+    <p class="error-msg" id="error-msg">ভুল পাসওয়ার্ড! আবার চেষ্টা করো ❤️</p>
+  </div>
+
+  <!-- দ্বিতীয় পেজ: ৩টি গিফট -->
+  <div class="container" id="gift-page">
+    <h1>শুভ জন্মদিন হাবিবা! 🎂✨</h1>
+    <p>তোমার জন্য ৩টি স্পেশাল সারপ্রাইজ! যেকোনো একটি গিফট বক্সে ক্লিক করো:</p>
+    <div class="gift-grid">
+      <div class="gift-box" onclick="openGift(1)">🎁</div>
+      <div class="gift-box" onclick="openGift(2)">🎁</div>
+      <div class="gift-box" onclick="openGift(3)">🎁</div>
+    </div>
+  </div>
+
+  <!-- মেসেজ পপআপ -->
+  <div class="modal" id="message-modal">
+    <div class="modal-content">
+      <h2 id="modal-text"></h2>
+      <button onclick="closeModal()">বন্ধ করো ✨</button>
+    </div>
+  </div>
+
+  <script>
+    // ভাসমান হার্ট অ্যানিমেশন তৈরি
+    function createHearts() {
+      const container = document.getElementById('hearts-container');
+      for(let i = 0; i < 25; i++) {
+        const heart = document.createElement('div');
+        heart.classList.add('heart-bg');
+        heart.innerHTML = '❤️';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
+        heart.style.animationDelay = Math.random() * 5 + 's';
+        heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
+        container.appendChild(heart);
+      }
+    }
+    createHearts();
+
+    // পিন চেক করার ফাংশন (PIN: 1008)
+    function checkPin() {
+      const pin = document.getElementById('pin-input').value;
+      const errorMsg = document.getElementById('error-msg');
+      
+      if (pin === "1008") {
+        document.getElementById('lock-page').style.display = 'none';
+        document.getElementById('gift-page').style.display = 'block';
+      } else {
+        errorMsg.style.display = 'block';
+      }
+    }
+
+    // গিফট বক্সে ক্লিক করলে সারপ্রাইজ মেসেজ দেখানো
+    function openGift(num) {
+      const modal = document.getElementById('message-modal');
+      const modalText = document.getElementById('modal-text');
+
+      if (num === 1) {
+        modalText.innerText = "I Love You ❤️";
+      } else if (num === 2) {
+        modalText.innerText = "Will You Marry Me? 💍";
+      } else if (num === 3) {
+        modalText.innerText = "সারা জীবন এভাবেই আমার পাশে থেকো! 💖✨";
+      }
+
+      modal.style.display = 'flex';
+    }
+
+    function closeModal() {
+      document.getElementById('message-modal').style.display = 'none';
+    }
+  </script>
+</body>
+</html>
