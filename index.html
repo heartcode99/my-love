@@ -1,258 +1,405 @@
 <!DOCTYPE html>
 <html lang="bn">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Happy Birthday Habiba ❤️</title>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday My Queen Habiba 💖</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Pacifico&display=swap" rel="stylesheet">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Hind Siliguri', sans-serif;
+            user-select: none;
+        }
 
-    body {
-      background: linear-gradient(135deg, #ff758c 0%, #ff7eb3 100%);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      overflow: hidden;
-      position: relative;
-      color: #fff;
-    }
+        body {
+            background: linear-gradient(-45deg, #0d001a, #2a082e, #4a0033, #15002b);
+            background-size: 400% 400%;
+            animation: gradientBG 12s ease infinite;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            color: #fff;
+            position: relative;
+        }
 
-    /* ব্যাকগ্রাউন্ড ভাসমান লাভ অ্যানিমেশন */
-    .heart-bg {
-      position: absolute;
-      top: -10%;
-      color: rgba(255, 255, 255, 0.4);
-      animation: floatUp 6s linear infinite;
-    }
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
 
-    @keyframes floatUp {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
-    }
+        /* ক্যানভাস ব্যাকগ্রাউন্ড */
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
 
-    /* মূল কার্ড কনটেইনার */
-    .container {
-      background: rgba(255, 255, 255, 0.15);
-      backdrop-filter: blur(12px);
-      padding: 35px 25px;
-      border-radius: 20px;
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      text-align: center;
-      max-width: 380px;
-      width: 90%;
-      z-index: 10;
-    }
+        /* কার্ড কন্টেইনার */
+        .container {
+            width: 90%;
+            max-width: 420px;
+            z-index: 10;
+            margin: 20px 0;
+        }
 
-    h1 {
-      font-size: 26px;
-      margin-bottom: 15px;
-      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
-    }
+        .card {
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            border-radius: 30px;
+            padding: 30px 20px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(255, 105, 180, 0.3), inset 0 0 15px rgba(255, 105, 180, 0.2);
+            animation: floatCard 4s ease-in-out infinite alternate;
+        }
 
-    p {
-      font-size: 15px;
-      margin-bottom: 20px;
-      opacity: 0.95;
-    }
+        @keyframes floatCard {
+            0% { transform: translateY(0px) rotate(0deg); }
+            100% { transform: translateY(-10px) rotate(0.5deg); }
+        }
 
-    /* পাসওয়ার্ড ইনপুট ফিল্ড */
-    input[type="password"] {
-      width: 80%;
-      padding: 12px;
-      font-size: 20px;
-      text-align: center;
-      border: 2px solid rgba(255, 255, 255, 0.6);
-      border-radius: 12px;
-      outline: none;
-      background: rgba(255, 255, 255, 0.25);
-      color: #fff;
-      margin-bottom: 15px;
-      letter-spacing: 6px;
-    }
+        .title {
+            font-family: 'Pacifico', cursive, 'Hind Siliguri';
+            font-size: 28px;
+            background: linear-gradient(45deg, #ff758c, #ff7eb3, #ffcca1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(255, 117, 140, 0.5);
+        }
 
-    input[type="password"]::placeholder {
-      color: rgba(255, 255, 255, 0.7);
-      letter-spacing: normal;
-      font-size: 14px;
-    }
+        /* লাভ হার্ট পালস */
+        .heart-crown {
+            font-size: 55px;
+            display: inline-block;
+            animation: pulseHeart 1s infinite alternate;
+            cursor: pointer;
+        }
 
-    button {
-      background: #ff4757;
-      color: white;
-      border: none;
-      padding: 12px 30px;
-      font-size: 16px;
-      border-radius: 25px;
-      cursor: pointer;
-      font-weight: bold;
-      box-shadow: 0 5px 15px rgba(255, 71, 87, 0.4);
-      transition: all 0.3s ease;
-    }
+        @keyframes pulseHeart {
+            0% { transform: scale(1) rotate(-5deg); filter: drop-shadow(0 0 5px #ff416c); }
+            100% { transform: scale(1.2) rotate(5deg); filter: drop-shadow(0 0 20px #ff416c); }
+        }
 
-    button:hover {
-      background: #ff6b81;
-      transform: translateY(-2px);
-    }
+        /* ইনপুট ও বাটন */
+        .input-box {
+            width: 85%;
+            padding: 12px 20px;
+            font-size: 18px;
+            text-align: center;
+            border: 2px solid rgba(255, 105, 180, 0.6);
+            border-radius: 50px;
+            background: rgba(0, 0, 0, 0.4);
+            color: #fff;
+            outline: none;
+            margin: 15px 0;
+            box-shadow: 0 0 10px rgba(255, 105, 180, 0.3);
+            transition: 0.3s;
+        }
+        .input-box:focus {
+            border-color: #ff2a70;
+            box-shadow: 0 0 25px rgba(255, 42, 112, 0.8);
+        }
 
-    .error-msg {
-      color: #ffeaa7;
-      font-size: 14px;
-      margin-top: 12px;
-      display: none;
-      font-weight: bold;
-    }
+        .btn-glow {
+            background: linear-gradient(45deg, #ff007f, #ff5e62);
+            color: white;
+            border: none;
+            padding: 12px 32px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 0, 127, 0.6);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
 
-    /* দ্বিতীয় পেজ (গিফট পেজ) */
-    #gift-page {
-      display: none;
-    }
+        .btn-glow:hover {
+            transform: scale(1.08);
+            box-shadow: 0 0 35px rgba(255, 0, 127, 0.9);
+        }
 
-    .gift-grid {
-      display: flex;
-      justify-content: space-around;
-      margin-top: 25px;
-    }
+        /* মিউজিক প্লেয়ার বাটন */
+        .music-btn {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            z-index: 100;
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.5);
+            animation: spinMusic 8s linear infinite;
+        }
+        @keyframes spinMusic { 100% { transform: rotate(360deg); } }
 
-    .gift-box {
-      font-size: 40px;
-      cursor: pointer;
-      transition: transform 0.3s, background 0.3s;
-      background: rgba(255, 255, 255, 0.25);
-      padding: 15px;
-      border-radius: 15px;
-      border: 1px dashed rgba(255, 255, 255, 0.6);
-    }
+        /* আনলক করা কন্টেন্ট */
+        #secret-content {
+            display: none;
+            animation: zoomIn 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
 
-    .gift-box:hover {
-      transform: scale(1.15) rotate(5deg);
-      background: rgba(255, 255, 255, 0.4);
-    }
+        @keyframes zoomIn {
+            from { opacity: 0; transform: scale(0.5); }
+            to { opacity: 1; transform: scale(1); }
+        }
 
-    /* মেসেজ পপআপ মডাল */
-    .modal {
-      display: none;
-      position: fixed;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background: rgba(0, 0, 0, 0.6);
-      justify-content: center;
-      align-items: center;
-      z-index: 100;
-    }
+        /* ইন্টারঅ্যাক্টিভ বাটন গ্রিড */
+        .interactive-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-top: 20px;
+        }
 
-    .modal-content {
-      background: #fff;
-      color: #2f3542;
-      padding: 30px 20px;
-      border-radius: 20px;
-      text-align: center;
-      width: 80%;
-      max-width: 320px;
-      animation: popIn 0.3s ease;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.3);
-    }
+        .grid-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 182, 193, 0.3);
+            padding: 12px 8px;
+            border-radius: 18px;
+            color: #fff;
+            font-size: 13px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
 
-    @keyframes popIn {
-      from { transform: scale(0.7); opacity: 0; }
-      to { transform: scale(1); opacity: 1; }
-    }
+        .grid-btn:hover {
+            background: rgba(255, 105, 180, 0.4);
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 5px 15px rgba(255, 105, 180, 0.5);
+        }
 
-    .modal-content h2 {
-      color: #ff4757;
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-  </style>
+        .typewriter-text {
+            font-size: 15px;
+            line-height: 1.7;
+            color: #ffe6f2;
+            min-height: 70px;
+            margin: 15px 0;
+            text-shadow: 0 0 8px rgba(255, 192, 203, 0.5);
+        }
+
+        /* পপআপ ডায়ালগ */
+        .popup-box {
+            display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 20px;
+            border: 1px dashed #ff758c;
+            font-size: 14px;
+            animation: fadeIn 0.4s;
+        }
+
+        /* লাভ মিটার অ্যানিমেশন */
+        .meter-bar {
+            width: 100%;
+            height: 12px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            margin-top: 8px;
+            overflow: hidden;
+        }
+        .meter-fill {
+            width: 0%;
+            height: 100%;
+            background: linear-gradient(90deg, #ff007f, #ff758c);
+            transition: width 2s ease-in-out;
+            box-shadow: 0 0 10px #ff007f;
+        }
+    </style>
 </head>
 <body>
 
-  <!-- ভাসমান লাভ ব্যাকগ্রাউন্ড -->
-  <div id="hearts-container"></div>
+    <canvas id="canvas"></canvas>
 
-  <!-- প্রথম পেজ: লক সিস্টেম -->
-  <div class="container" id="lock-page">
-    <h1>হ্যাপি বার্থডে হাবিবা 💖</h1>
-    <p>তোমার সারপ্রাইজ উপহারটি আনলক করতে পিন কোড দাও:</p>
-    <input type="password" id="pin-input" maxlength="4" placeholder="PIN দিন">
-    <br>
-    <button onclick="checkPin()">আনলক করো 🔓</button>
-    <p class="error-msg" id="error-msg">ভুল পাসওয়ার্ড! আবার চেষ্টা করো ❤️</p>
-  </div>
+    <div class="music-btn" id="musicToggle" onclick="toggleAudio()">🎵</div>
+    <audio id="bgMusic" loop src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=romantic-piano-112199.mp3"></audio>
 
-  <!-- দ্বিতীয় পেজ: ৩টি গিফট -->
-  <div class="container" id="gift-page">
-    <h1>শুভ জন্মদিন হাবিবা! 🎂✨</h1>
-    <p>তোমার জন্য ৩টি স্পেশাল সারপ্রাইজ! যেকোনো একটি গিফট বক্সে ক্লিক করো:</p>
-    <div class="gift-grid">
-      <div class="gift-box" onclick="openGift(1)">🎁</div>
-      <div class="gift-box" onclick="openGift(2)">🎁</div>
-      <div class="gift-box" onclick="openGift(3)">🎁</div>
+    <div class="container">
+        <div class="card" id="lockCard">
+            <div class="heart-crown" onclick="explodeHearts(event)">👑💖</div>
+            <h1 class="title">Happy Birthday Habiba!</h1>
+            <p style="font-size: 14px; opacity: 0.9;">আমার ভালোবাসার রাজকন্যার গোপন পাসওয়ার্ডটি দাও ✨</p>
+            
+            <input type="password" id="passInput" class="input-box" placeholder="••••">
+            <br>
+            <button class="btn-glow" onclick="checkPass()">আনলক করো ✨</button>
+            <p id="errorText" style="color: #ff4d4d; font-size: 12px; margin-top: 10px; display: none;">উফফ! ভুল পাসওয়ার্ড 🙈 আবার চেষ্টা করো!</p>
+        </div>
+
+        <div class="card" id="secret-content">
+            <div class="heart-crown" onclick="explodeHearts(event)">💖🎂✨</div>
+            <h1 class="title">শুভ জন্মদিন হাবিবু! 🌸</h1>
+            
+            <div class="typewriter-text" id="typewriter"></div>
+
+            <div class="interactive-grid">
+                <button class="grid-btn" onclick="openBox('letter')">💌 ভালোবাসার চিঠি</button>
+                <button class="grid-btn" onclick="openBox('hug')">🤗 জাদুকরী জড়িয়ে ধরা</button>
+                <button class="grid-btn" onclick="openBox('meter')">📊 লাভ মিটার টেস্ট</button>
+                <button class="grid-btn" onclick="openBox('promise')">💍 চিরদিনের ওয়াদা</button>
+            </div>
+
+            <div class="popup-box" id="popupBox"></div>
+        </div>
     </div>
-  </div>
 
-  <!-- মেসেজ পপআপ -->
-  <div class="modal" id="message-modal">
-    <div class="modal-content">
-      <h2 id="modal-text"></h2>
-      <button onclick="closeModal()">বন্ধ করো ✨</button>
-    </div>
-  </div>
+    <script>
+        // ১. ক্যানভাস অ্যানিমেশন ও হার্ট এক্সপ্লোশন
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
 
-  <script>
-    // ভাসমান হার্ট অ্যানিমেশন তৈরি
-    function createHearts() {
-      const container = document.getElementById('hearts-container');
-      for(let i = 0; i < 25; i++) {
-        const heart = document.createElement('div');
-        heart.classList.add('heart-bg');
-        heart.innerHTML = '❤️';
-        heart.style.left = Math.random() * 100 + 'vw';
-        heart.style.animationDuration = (Math.random() * 3 + 3) + 's';
-        heart.style.animationDelay = Math.random() * 5 + 's';
-        heart.style.fontSize = (Math.random() * 15 + 15) + 'px';
-        container.appendChild(heart);
-      }
-    }
-    createHearts();
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
 
-    // পিন চেক করার ফাংশন (PIN: 1008)
-    function checkPin() {
-      const pin = document.getElementById('pin-input').value;
-      const errorMsg = document.getElementById('error-msg');
-      
-      if (pin === "1008") {
-        document.getElementById('lock-page').style.display = 'none';
-        document.getElementById('gift-page').style.display = 'block';
-      } else {
-        errorMsg.style.display = 'block';
-      }
-    }
+        class Particle {
+            constructor(x, y, isExplosion = false) {
+                this.x = x || Math.random() * canvas.width;
+                this.y = y || canvas.height + 20;
+                this.size = Math.random() * 18 + 10;
+                this.speedY = isExplosion ? (Math.random() - 0.5) * 8 : -(Math.random() * 2 + 1);
+                this.speedX = isExplosion ? (Math.random() - 0.5) * 8 : (Math.random() - 0.5) * 1.5;
+                this.color = `hsl(${Math.random() * 50 + 320}, 100%, 70%)`;
+                this.opacity = 1;
+                this.isExplosion = isExplosion;
+                this.char = ['💖', '🌸', '✨', '💕', '🌹', '❤️'][Math.floor(Math.random() * 6)];
+            }
+            update() {
+                this.y += this.speedY;
+                this.x += this.speedX;
+                if (this.isExplosion) {
+                    this.opacity -= 0.02;
+                } else if (this.y < -20) {
+                    this.y = canvas.height + 20;
+                    this.x = Math.random() * canvas.width;
+                }
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = Math.max(this.opacity, 0);
+                ctx.font = `${this.size}px serif`;
+                ctx.fillText(this.char, this.x, this.y);
+                ctx.restore();
+            }
+        }
 
-    // গিফট বক্সে ক্লিক করলে সারপ্রাইজ মেসেজ দেখানো
-    function openGift(num) {
-      const modal = document.getElementById('message-modal');
-      const modalText = document.getElementById('modal-text');
+        for (let i = 0; i < 25; i++) {
+            particles.push(new Particle());
+        }
 
-      if (num === 1) {
-        modalText.innerText = "I Love You ❤️";
-      } else if (num === 2) {
-        modalText.innerText = "Will You Marry Me? 💍";
-      } else if (num === 3) {
-        modalText.innerText = "সারা জীবন এভাবেই আমার পাশে থেকো! 💖✨";
-      }
+        function animateCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach((p, index) => {
+                p.update();
+                p.draw();
+                if (p.isExplosion && p.opacity <= 0) {
+                    particles.splice(index, 1);
+                }
+            });
+            requestAnimationFrame(animateCanvas);
+        }
+        animateCanvas();
 
-      modal.style.display = 'flex';
-    }
+        function explodeHearts(e) {
+            const x = e.clientX || window.innerWidth / 2;
+            const y = e.clientY || window.innerHeight / 2;
+            for (let i = 0; i < 30; i++) {
+                particles.push(new Particle(x, y, true));
+            }
+        }
+        window.addEventListener('click', (e) => {
+            if (e.target.tagName !== 'BUTTON' && e.target.tagName !== 'INPUT') {
+                explodeHearts(e);
+            }
+        });
 
-    function closeModal() {
-      document.getElementById('message-modal').style.display = 'none';
-    }
-  </script>
+        // ২. ব্যাকগ্রাউন্ড গান
+        const audio = document.getElementById('bgMusic');
+        let isPlaying = false;
+        function toggleAudio() {
+            if (isPlaying) {
+                audio.pause();
+                document.getElementById('musicToggle').style.animationPlayState = 'paused';
+            } else {
+                audio.play();
+                document.getElementById('musicToggle').style.animationPlayState = 'running';
+            }
+            isPlaying = !isPlaying;
+        }
+
+        // ৩. পাসওয়ার্ড আনলক
+        function checkPass() {
+            const val = document.getElementById('passInput').value.toLowerCase().trim();
+            // যেকোনো পাসওয়ার্ড লিখলেই আনলক হবে
+            if (val !== "") {
+                document.getElementById('lockCard').style.display = 'none';
+                document.getElementById('secret-content').style.display = 'block';
+                startTypewriter();
+                toggleAudio(); // গান অটো-প্লে শুরু হবে
+                explodeHearts({ clientX: window.innerWidth / 2, clientY: window.innerHeight / 2 });
+            } else {
+                document.getElementById('errorText').style.display = 'block';
+            }
+        }
+
+        // ৪. টাইপরাইটার অ্যানিমেশন
+        const loveNote = "আমার মিষ্টি হাবিবু, আজকের এই বিশেষ দিনে তোমার হাসিমুখটাই আমার সেরা উপহার। তুমি পাশে থাকলে পুরো পৃথিবীটা অনেক বেশি সুন্দর মনে হয়! শুভ জন্মদিন আমার রানি! 💕✨";
+        let textIdx = 0;
+        function startTypewriter() {
+            if (textIdx < loveNote.length) {
+                document.getElementById('typewriter').innerHTML += loveNote.charAt(textIdx);
+                textIdx++;
+                setTimeout(startTypewriter, 45);
+            }
+        }
+
+        // ৫. পপআপ সার্ভিসেস
+        function openBox(type) {
+            const box = document.getElementById('popupBox');
+            box.style.display = 'block';
+
+            if(type === 'letter') {
+                box.innerHTML = "💌 <b>চিঠি:</b><br>হাবিবু, জীবনের বাকি পথটাও ঠিক এভাবে তোমার হাত ধরে হেঁটে যেতে চাই। ভালোবাসি তোমায় অনেক অনেক! ❤️";
+            } else if(type === 'hug') {
+                box.innerHTML = "🤗 <b>ভার্চুয়াল কোলাকুলি:</b><br>অনেকগুলো আঁটসাঁট জাদুকরী জড়িয়ে ধরা আর সাথে অনেকগুলো মিষ্টি চুমু! 💋✨";
+            } else if(type === 'meter') {
+                box.innerHTML = `
+                    💖 <b>ভালোবাসার পরিমাপ:</b> ♾️ ১০০০০% (অসীম!)
+                    <div class="meter-bar"><div class="meter-fill" id="meterFill"></div></div>
+                `;
+                setTimeout(() => {
+                    document.getElementById('meterFill').style.width = '100%';
+                }, 100);
+            } else if(type === 'promise') {
+                box.innerHTML = "💍 <b>ওয়াদা:</b><br>কথা দিচ্ছি, হাজারো ব্যস্ততার মাঝেও তোমার মুখের হাসিটা কখনো মুছে যেতে দেবো না! 🥰";
+            }
+        }
+    </script>
 </body>
 </html>
